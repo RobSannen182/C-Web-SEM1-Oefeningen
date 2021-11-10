@@ -1,0 +1,32 @@
+﻿@model InAndOut.Models.ExpenseType
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<form method="post" asp-action="DeletePost" asp-route-Id="@Model.Id">
+    <div class="border row p-3">
+        <div class="col-12">
+            <div class="row">
+                <h2 class="text-black-50 pb-3 col">Delete Expensetype</h2>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label asp-for="Id"></label>
+                    <input asp-for="Id" class="form-control" disabled />
+                </div>
+                <div class="form-group col-6">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" disabled />
+                </div>
+            </div>
+            <div class="row form-group pt-5">
+                <div class="col-6 text-center">
+                    <input type="submit" class="btn btn-danger w-50" value="Delete" />
+                </div>
+                <div class="col-6 text-center">
+                    <a asp-action="Index" class="btn btn-success w-50">Back to overview</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <ul>
+        <li>
+            <h4> Aanmaak van ons project - MVCVoertuig</h4>
+        </li>
+        <li>
+            <h4> Nuget Package Manager</h4>
+            <h5>EntityFrameworkCore.Tools</h5>
+            <h5>EntityFrameworkCore.SQL Server</h5>
+        </li>
+        <li>
+            <h4>Project - Folder toevoegen: Data</h4>
+        </li>
+        <li>
+            <h4>Add class - VoertuigDbContext</h4>
+            <h5>
+                using Microsoft.EntityFrameworkCore;
+            </h5>
+            <h6>
+                namespace MVCVoertuig.Data
+                {
+                public class VoertuigDbContext : DbContext
+                {
+                public VoertuigDbContext(DbContextOptions<VoertuigDbContext>
+                    options) : base(options) { }
+                    }
+                    }
+            </h6>
+        </li>
+        <li>
+            <h4>Models</h4>
+            <h5>Add class: Voertuig.cs</h5>
+            <h6>
+                namespace MVCVoertuig.Models
+                {
+                public class Voertuig
+                {
+                public int VoertuigId { get; set; }
+                [Required]
+                public string Merk { get; set; }
+                [Required]
+                public string MerkType { get; set; }
+                [Required]
+                public int Bouwjaar { get; set; }
+                [Required]
+                public int Km { get; set; }
+                [Column(TypeName = "decimal(8, 2)")]
+                public decimal VerkoopPrijs { get; set; }
+                public bool AanwezigInShowroom { get; set; }
+                }
+                }
+            </h6>
+        </li>
+        <li>
+            <h4>Create DBSet<Voertuig> in VoertuigDbContext</h4>
+        </li>
+        <li>
+            <h4>appsettings.json</h4>
+            <h5>
+                ,
+                "ConnectionStrings": {
+                "VoertuigConnection": "Server=(localdb)\\MSSQLLocalDB;Database=MVCVoetuig;MultipleActiveResultSets=true"
+                }
+            </h5>
+        </li>
+        <li>
+            <h4>Startup.cs</h4>
+            <h5>
+                public void ConfigureServices(IServiceCollection services)
+                {
+                services.AddControllersWithViews();
+                services.AddDbContext<VoertuigDbContext>
+                    (opts => {
+                    opts.UseSqlServer(
+                    Configuration["ConnectionStrings:VoertuigConnection"]);
+                    });
+                    }
+            </h5>
+        </li>
+        <li>
+            <h4>Nuget Package Manager console</h4>
+            <h5>
+                add-migration initial
+            </h5>
+            <h5>update-database</h5>
+        </li>
+    </ul>
+    
+</div>

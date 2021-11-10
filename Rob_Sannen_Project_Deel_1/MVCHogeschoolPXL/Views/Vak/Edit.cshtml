@@ -1,0 +1,47 @@
+﻿@model MVCHogeschoolPXL.Models.Vak
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<form asp-action="Edit">
+    <div class="border border-info p-5 mt-5">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="VakId" />
+        <div class="row">
+            <div class="col text-primary pb-3">
+                <h2>Cursusgegevens aanpassen</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 form-group">
+                <label asp-for="VakNaam" class="control-label"></label>
+                <input asp-for="VakNaam" class="form-control" />
+                <span asp-validation-for="VakNaam" class="text-danger"></span>
+            </div>
+            <div class="col-4 form-group">
+                <label asp-for="Studiepunten" class="control-label"></label>
+                <input asp-for="Studiepunten" class="form-control" />
+                <span asp-validation-for="Studiepunten" class="text-danger"></span>
+            </div>
+            <div class="col-4 form-group">
+                <label asp-for="HandboekId" class="control-label"></label>
+                <select asp-for="HandboekId" class="form-control" asp-items="ViewBag.HandboekId"></select>
+                <span asp-validation-for="HandboekId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-group pt-5">
+            <div class="col-6 text-right">
+                <input type="submit" value="Save" class="btn btn-success w-50" />
+            </div>
+            <div class="col-6 text-left">
+                <a asp-action="Index" class="btn btn-danger w-50">Annuleren</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

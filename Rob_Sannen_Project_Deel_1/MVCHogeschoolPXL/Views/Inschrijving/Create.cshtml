@@ -1,0 +1,108 @@
+﻿@model MVCHogeschoolPXL.ViewModels.InschrijvingInfo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@if (ViewBag.Count > 0)
+{
+    if (ViewBag.Count == 1)
+    {
+        <p class="text-center col-6 offset-3 pt-5">Er zijn nog geen vakken!<br />Maak eerst een vak aan!</p>
+    }
+    if (ViewBag.Count == 2)
+    {
+        <p class="text-center col-6 offset-3 pt-5">Er zijn nog geen studenten!<br />Maak eerst een student aan!</p>
+    }
+    if (ViewBag.Count == 3)
+    {
+        <p class="text-center col-6 offset-3 pt-5">Er zijn nog geen vakken en studenten!<br />Maak eerst een vak en een student aan!</p>
+    }
+}
+else
+{
+    @if (ViewBag.LectorId == null)
+    {
+        <form method="post" asp-action="CreateKeuze">
+            <div class="border border-info mt-5">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row p-4">
+                    <div class="col-12">
+                        <div class="row">
+                            <h2 class="text-primary col pb-3">Nieuwe inschrijving aanmaken</h2>
+                        </div>
+                        <div class="row pb-3">
+                            <div class="form-group col-6">
+                                <label asp-for="StudentFullName" class="control-label"></label>
+                                <select asp-for="StudentId" class="form-control" asp-items="ViewBag.StudentFullName">
+                                    <option value="" disabled selected hidden>Kies een student</option>
+                                </select>
+                                <span asp-validation-for="StudentId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-6">
+                                <label asp-for="VakNaam" class="control-label"></label>
+                                <select asp-for="VakId" class="form-control" asp-items="ViewBag.VakId">
+                                    <option value="" disabled selected hidden>Kies een cursus</option>
+                                </select>
+                                <span asp-validation-for="VakId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-5">
+                            <div class="col-2 text-center">
+                                <input type="submit" value="Verder" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    }
+    else
+    {
+        <form method="post" asp-action="Create">
+            <div class="border border-info mt-5">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row p-4">
+                    <div class="col-12">
+                        <div class="row">
+                            <h2 class="text-primary col pb-3">Nieuwe inschrijving aanmaken</h2>
+                        </div>
+                        <div class="row pb-3">
+                            <div class="col-6 form-group">
+                                <label asp-for="StudentFullName" class="control-label"></label>
+                                <input type="text" asp-for="StudentFullName" value="@ViewBag.StudNaam" class="form-control" disabled />
+                                <input type="text" asp-for="StudentId" value="@ViewBag.StudId" class="form-control" hidden />
+                            </div>
+                            <div class="col-6 form-group">
+                                <label asp-for="VakNaam" class="control-label"></label>
+                                <input type="text" asp-for="VakNaam" value="@ViewBag.VakNaam" class="form-control" disabled />
+                                <input type="text" asp-for="VakId" value="@ViewBag.VakId" class="form-control" hidden />
+                            </div>
+                            <div class="col-6 form-group">
+                                <label asp-for="LectorFullName" class="control-label"></label>
+                                <select asp-for="LectorId" class="form-control" asp-items="ViewBag.LectorId"></select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="AcademieJaar" class="control-label"></label>
+                                <select asp-for="AcademieJaarId" class="form-control" asp-items="ViewBag.AcademieJaarId"></select>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-5">
+                            <div class="col-6 text-right">
+                                <input type="submit" value="Maak inschrijving aan" class="btn btn-success w-50" />
+                            </div>
+                            <div class="col-6 text-left">
+                                <a asp-action="Index" class="btn btn-danger w-50">annuleren</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    }
+}
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

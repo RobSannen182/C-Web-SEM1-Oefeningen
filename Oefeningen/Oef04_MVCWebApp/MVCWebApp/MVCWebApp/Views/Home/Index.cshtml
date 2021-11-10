@@ -1,0 +1,23 @@
+﻿@using MVCWebApp.Data
+@model IEnumerable<ClientLocationModel>
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">Databank is gestart in startup.cs</h1>
+    <h4># client records: @Databank.Clients.Count()</h4>
+    <h4># location records: @Databank.Locations.Count()</h4>
+</div>
+<div>
+    <table class="table table-bordered">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.KlantName</td>
+                <td>@item.City</td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<string>
+
+@*<ul class="navbar nav-pills flex-column">
+    <li class="nav-item">
+        <a asp-action="Index">Overzicht</a>
+    </li>
+    @foreach (var locatie in Model)
+    {
+        <li class="nav-item">
+            <a asp-controller="Parties" asp-action="PerLocatie" asp-route-locatie="@locatie">@locatie</a>
+        </li>
+    }
+</ul>*@
+<a class="btn btn-block btn-info" asp-action="Index">Overzicht</a>
+@foreach (var locatie in Model)
+{
+    <a class="btn btn-block btn-info" asp-controller="Parties" asp-action="PerLocatie" asp-route-locatie="@locatie">@locatie</a>
+}

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MVCPXLParty2021.Models.Party>
+
+@{
+    ViewData["Title"] = "PerLocatie";
+}
+
+<div class="row">
+    <div class="col-2">
+
+    </div>
+    <div class="col-10">
+        <h1 class="text-center">@Model.FirstOrDefault().Location.City</h1>
+        <p class="text-center">
+            <a asp-action="Create">Create New</a>
+        </p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-2">
+        <vc:location-filter-menu></vc:location-filter-menu>
+    </div>
+    <div class="col-10">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PartyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PartyDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Location)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PartyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PartyDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Location.City)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.PartyId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.PartyId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.PartyId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

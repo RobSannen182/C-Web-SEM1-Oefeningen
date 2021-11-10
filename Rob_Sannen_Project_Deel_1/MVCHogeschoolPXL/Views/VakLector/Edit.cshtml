@@ -1,0 +1,42 @@
+﻿@model MVCHogeschoolPXL.Models.VakLector
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<form asp-action="Edit">
+    <div class="border border-info p-5 mt-5">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="VaklectorId" />
+        <div class="row">
+            <div class="col text-primary pb-3">
+                <h2>Vaklectorgegevens aanpassen</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 form-group">
+                <label asp-for="Vak.VakNaam" class="control-label"></label>
+                <select asp-for="VakId" class="form-control" asp-items="ViewBag.VakId"></select>
+                <span asp-validation-for="VakId" class="text-danger"></span>
+            </div>
+            <div class="col-6 form-group">
+                <label asp-for="LectorId" class="control-label"></label>
+                <select asp-for="LectorId" class="form-control" asp-items="ViewBag.LectorId"></select>
+                <span asp-validation-for="LectorId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-group pt-5">
+            <div class="col-6 text-right">
+                <input type="submit" value="Opslaan" class="btn btn-success w-50" />
+            </div>
+            <div class="col-6 text-left">
+                <a asp-action="Index" class="btn btn-danger w-50">Annuleren</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

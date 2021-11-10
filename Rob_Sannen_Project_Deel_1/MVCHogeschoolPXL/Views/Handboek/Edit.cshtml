@@ -1,0 +1,51 @@
+﻿@model MVCHogeschoolPXL.Models.Handboek
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<form asp-action="Edit">
+    <div class="border border-info p-5 mt-5">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="HandboekId" />
+        <div class="row">
+            <div class="col text-primary pb-3">
+                <h2>Handboekgegevens aanpassen</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 form-group">
+                <label asp-for="Titel" class="control-label"></label>
+                <input asp-for="Titel" class="form-control" />
+                <span asp-validation-for="Titel" class="text-danger"></span>
+            </div>
+            <div class="col-3 form-group">
+                <label asp-for="Kostprijs" class="control-label"></label>
+                <input asp-for="Kostprijs" class="form-control" />
+                <span asp-validation-for="Kostprijs" class="text-danger"></span>
+            </div>
+            <div class="col-3 form-group">
+                <label asp-for="UitgifteDatum" class="control-label"></label>
+                <input asp-for="UitgifteDatum" class="form-control" />
+                <span asp-validation-for="UitgifteDatum" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <label asp-for="Afbeelding" class="control-label"></label>
+                <input asp-for="Afbeelding" class="form-control" />
+                <span asp-validation-for="Afbeelding" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-group pt-5">
+            <div class="col-6 text-right">
+                <input type="submit" value="Opslaan" class="btn btn-success w-50" />
+            </div>
+            <div class="col-6 text-left">
+                <a asp-action="Index" class="btn btn-danger w-50">Annuleren</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,17 @@
+﻿@page
+@model Oef1.Pages.SelecteerLocatieModel
+@{
+    var locaties = Oef1.Data.Databank.Locaties;
+    var list = locaties.Select(x => new SelectListItem
+        {
+            Text = x.City,
+            Value = x.LocationId.ToString()
+        });
+}
+<div>
+    <form method="post">
+        <select name="LocationSelect" asp-items="@list"></select>
+        <label>&nbsp;</label>
+        <input type="submit" value="Selecteer locatie" />
+    </form>
+</div>

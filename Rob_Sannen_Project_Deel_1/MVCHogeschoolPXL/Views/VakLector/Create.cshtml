@@ -1,0 +1,46 @@
+﻿@model MVCHogeschoolPXL.Models.VakLector
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form method="post" asp-action="Create">
+    <div class="border border-info mt-5">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row p-4">
+            <div class="col-12">
+                <div class="row">
+                    <h2 class="text-primary col pb-3">Nieuwe vaklector aanmaken</h2>
+                </div>
+                <div class="row pb-3">
+                    <div class="form-group col-6">
+                        <label asp-for="Vak.VakNaam" class="control-label"></label>
+                        <select asp-for="VakId" class="form-control" asp-items="ViewBag.VakId">
+                            <option value="" disabled selected hidden>Kies een vak</option>
+                        </select>
+                        <span asp-validation-for="VakId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-6">
+                        <label asp-for="LectorId" class="control-label"></label>
+                        <select asp-for="LectorId" class="form-control" asp-items="ViewBag.LectorId">
+                            <option value="" disabled selected hidden>Kies een lector</option>
+                        </select>
+                        <span asp-validation-for="LectorId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row pt-5">
+                    <div class="col-6 text-right">
+                        <input type="submit" value="Maak vaklector aan" class="btn btn-success w-50" />
+                    </div>
+                    <div class="col-6 text-left">
+                        <a asp-action="Index" class="btn btn-danger w-50">annuleren</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

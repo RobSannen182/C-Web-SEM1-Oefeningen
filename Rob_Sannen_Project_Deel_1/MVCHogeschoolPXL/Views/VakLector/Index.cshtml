@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MVCHogeschoolPXL.Models.VakLector>
+
+@{
+    ViewData["Title"] = "Index";
+    var dict = new Dictionary<string, string>() {
+        { "Vak", "Cursussen" }, { "Handboek", "Handboeken" }, { "VakLector", "Vaklectoren" }
+    };
+}
+
+<div class="row">
+    <div class="col-2 pt-5 mt-5">
+        <partial name="CursusButtons" model="@dict" />
+    </div>
+    <div class="col-10">
+        <div class="row pt-5 pb-2">
+            <div class="col-5 text-primary">
+                <h1>Overzicht vaklectoren</h1>
+            </div>
+            <div class="col-6 text-left d-flex align-items-center">
+                <a asp-action="Create" class="btn btn-success">Wijs een vak toe aan een lector</a>
+            </div>
+        </div>
+        @if (Model.Count() > 0)
+        {
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Vak)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Lector)
+                            </th>
+                            <th width="30%" class="text-center">
+                                Acties
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Vak.VakNaam)
+                                </td>
+                                <td>
+                                    @item.Lector.Gebruiker.Voornaam @item.Lector.Gebruiker.Naam
+                                </td>
+                                <td>
+                                    <div class="btn-group w-100" role="group">
+                                        <a asp-action="Edit" asp-route-id="@item.VaklectorId" color="info">Wijzig</a>
+                                        <a asp-action="Details" asp-route-id="@item.VaklectorId" color="primary">Details</a>
+                                        <a asp-action="Delete" asp-route-id="@item.VaklectorId" color="danger">Wissen</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="text-center col-6 offset-3 pt-5">Er zijn nog geen lectoren toegewezen!</p>
+        }
+    </div>
+</div>

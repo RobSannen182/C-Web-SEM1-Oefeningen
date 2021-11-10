@@ -1,0 +1,16 @@
+﻿@page
+@model Oef1.Pages.LocatieDetailsModel
+@{
+    var id = Model.LocationId;
+    var locatie = Oef1.Data.Databank.Locaties.Where(x => x.LocationId == id).FirstOrDefault();
+    var postcode = locatie.Postcode;
+    var city = locatie.City;
+}
+<div>
+    <br />
+    Id: @id
+    <br />
+    Postcode: @postcode
+    <br />
+    City: @city
+</div>

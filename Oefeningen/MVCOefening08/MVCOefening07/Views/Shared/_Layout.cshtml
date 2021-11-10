@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MVCOefening07</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <div class="text-center font-weight-bold">PXL oefening 07</div>
+    </header>
+    <div class="row">
+        <div class="col-1">
+        </div>
+        <div class="col-3">
+            PXL Menu
+            <br />
+            <ul>
+                <li><a class="alert-info" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a class="alert-info" asp-controller="Medewerkers" asp-action="Index">Medewerkers</a></li>
+                <li><a class="alert-info" asp-controller="Afdelings" asp-action="Index">Afdelingen</a></li>
+                <li><a class="alert-info" asp-controller="MedewerkerAfdelings" asp-action="Index">MedewerkerAfdeling</a></li>
+                <li><a class="alert-info" asp-controller="Home" asp-action="Overzicht">Overzicht</a></li>
+            </ul>
+        </div>
+        <div class="col-6">
+            @RenderBody()
+        </div>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="text-center font-weight-bold">PXL oefening 07 - @DateTime.Now.ToString("dd/MM/yyyy")</div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,20 @@
+﻿@model MVCSportStore.Models.ProductsList
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@foreach (var p in Model.Products)
+{
+    <partial name="ProductSummary" model="p" />
+}
+
+<page-link page-model="@Model.PagingInfo"></page-link>
+
+<div class="row">
+    @for (int i = 1; i <= Model.PagingInfo.Totalpages; i++)
+    {
+        <div class="col">
+            <a asp-controller="Home" asp-action="Index" asp-route-id="@i">@i</a>
+        </div>
+    }
+</div>

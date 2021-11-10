@@ -1,0 +1,76 @@
+﻿@page
+@model MVCHogeschoolPXL.Pages.PortfolioModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 border-bottom">AANPAK</h1>
+            </div>
+        </div>
+        <div class="row pt-5">
+            <div class="col-2"></div>
+            <div class="col-10">
+                <ul style="font-size:large">
+                    <li>
+                        <mark>Custom validation</mark> op uitgiftedatum handboekmodel
+                        <ul>
+                            <li class="pb-3 pt-2">ValidationAttributes/DateValidationAttribute.cs</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <mark>TagHelper</mark> voor actie buttons op Index Views
+                        <ul>
+                            <li class="pb-3 pt-2">TagHelpers/ActionButtonTagHelper.cs</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <mark>ViewComponent</mark> in Views/Gebruikers/Index om te filteren op functie
+                        <ul>
+                            <li class="pb-3 pt-2">Components/GebruikerFilerViewComponent.cs, Views/Shared/Components/GebruikerFilter/Default.cshtml</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <mark>ViewComponent</mark> in Index Views Cursussen, Handboeken en Vaklectoren om View te kiezen
+                        <ul>
+                            <li class="pb-3 pt-2">Components/CursusFilerViewComponent.cs, <br />Views/Shared/Components/CursusFilter/Default.cshtml</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <mark>Partial View</mark> in Views/Inschrijvingen/Index.cshtml om te filteren op cursus
+                        <ul>
+                            <li class="pb-3 pt-2">Views/Shared/CursusButtons.cshtml</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <mark>Validatie:</mark> Views/Vak/Create.cshtml kan enkel geopend worden als er al een handboek bestaat
+                        <ul>
+                            <li class="pb-3 pt-2">Controllers/VakController/Create</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <mark>Validatie:</mark> Views/Inschrijving/Create.cshtml kan enkel geopend worden als er al een cursus en student bestaat
+                        <ul>
+                            <li class="pb-3 pt-2">Controllers/InschrijvingController/Create</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <mark>SeedData</mark>
+                        <ul>
+                            <li class="pb-3 pt-2">Data/SeedData.cs</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Portfolio is een <mark>RazorPage</mark> en geen View
+                        <ul>
+                            <li class="pb-3 pt-2">Pages.Portfolio.cshtml</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

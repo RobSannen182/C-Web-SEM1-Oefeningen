@@ -1,0 +1,56 @@
+﻿@model MVCHogeschoolPXL.Models.Inschrijving
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="card w-25 text-center border-info mx-auto mt-5">
+    <div class="card-header border-info">
+        <h1 class="text-primary">Details</h1>
+    </div>
+    <div class="card-body">
+        <div>
+            <h4 class="text-left">Inschrijving</h4>
+            <hr class="border-info" />
+            <dl class="row pt-3">
+                <dt class="col-sm-5 text-left">
+                    @Html.DisplayNameFor(model => model.InschrijvingId)
+                </dt>
+                <dd class="col-sm-7 text-left">
+                    @Html.DisplayFor(model => model.InschrijvingId)
+                </dd>
+                <dt class="col-sm-5 text-left">
+                    @Html.DisplayNameFor(model => model.Student.Gebruiker.Naam) student
+                </dt>
+                <dd class="col-sm-7 text-left">
+                    @Model.Student.Gebruiker.Voornaam @Model.Student.Gebruiker.Naam
+                </dd>
+                <dt class="col-sm-5 text-left">
+                    @Html.DisplayNameFor(model => model.VakLector.Vak.VakNaam)
+                </dt>
+                <dd class="col-sm-7 text-left">
+                    @Model.VakLector.Vak.VakNaam
+                </dd>
+                <dt class="col-sm-5 text-left">
+                    @Html.DisplayNameFor(model => model.VakLector.Lector.Gebruiker.Naam) lector
+                </dt>
+                <dd class="col-sm-7 text-left">
+                    @Model.VakLector.Lector.Gebruiker.Voornaam @Model.VakLector.Lector.Gebruiker.Naam
+                </dd>
+                <dt class="col-sm-5 text-left">
+                    @Html.DisplayNameFor(model => model.AcademieJaar.StartDatum)
+                </dt>
+                <dd class="col-sm-7 text-left">
+                    @Html.DisplayFor(model => model.AcademieJaar.StartDatum)
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="card-footer border-info">
+        <div class="btn-group w-100" role="group">
+            <a asp-action="Edit" asp-route-id="@Model.InschrijvingId" class="btn btn-info w-50 mx-1">Wijzig</a>
+            <a asp-action="Index" class="btn btn-warning w-50 mx-1">Terug</a>
+        </div>
+
+    </div>
+</div>

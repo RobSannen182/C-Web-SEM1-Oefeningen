@@ -1,0 +1,42 @@
+﻿@model MVCTagHelper.ViewModels.MedewerkerCard
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<medewerker-card medewerker-card-view-model="@Model"></medewerker-card>
+<div>
+    <h4>Medewerker</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MedewerkerNaam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MedewerkerNaam)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MedewerkerId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MedewerkerId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Medewerker.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Medewerker.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Medewerker.Afdeling.AfdelingNaam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Medewerker.Afdeling.AfdelingNaam)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MedewerkerId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

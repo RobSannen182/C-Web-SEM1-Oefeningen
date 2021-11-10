@@ -1,0 +1,57 @@
+﻿@model InAndOut.Models.ViewModels.ExpenseVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+    
+<form method="post" asp-action="Create">
+    <div class="border">
+        @* onderstaande lijn is optioneel *@
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div> @* Verander ModelOnly naar All > foute ingave > div wordt zichtbaar met de foutmessages *@
+        <div class="row p-4">
+            <div class="col-12">
+                <div class="row">
+                    <h2 class="text-black-50 col pb-3">Create new Expence</h2>
+                </div>
+                <div class="row pb-3">
+                    <div class="form-group col-4">
+                        <label asp-for="Expense.Item" class="control-label"></label>
+                        <input asp-for="Expense.Item" class="form-control" />
+                        <span asp-validation-for="Expense.Item" class="text-danger"></span> @* foute ingave > span met foutmessage wordt zichtbaar *@
+                    </div>
+                    <div class="form-group col-4">
+                        <label asp-for="Expense.Price" class="control-label"></label>
+                        <input asp-for="Expense.Price" class="form-control" />
+                        <span asp-validation-for="Expense.Price" class="text-danger"></span> @* foute ingave > span met foutmessage wordt zichtbaar *@
+                    </div>
+                    <div class="form-group col-4">
+                        <label asp-for="Expense.ExpenseTypeId" class="control-label"></label>
+                        <select asp-for="Expense.ExpenseTypeId" asp-items="@Model.TypeDropDown" class="form-control">
+                            <option selected>--Select Expense Type--</option>
+                        </select>
+                        <span asp-validation-for="Expense.ExpenseTypeId" class="text-danger"></span> @* foute ingave > span met foutmessage wordt zichtbaar *@
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6 text-center">
+                        <input type="submit" value="Create expense" class="btn btn-info w-50" />
+                    </div>
+                    <div class="col-6 text-center">
+                        <a asp-action="Index" class="btn btn-danger w-50">Back to overview</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@* Onderstaande code is enkel voor serverside validation *@
+
+@section Scripts{ 
+    @{ <partial name="_ValidationScriptsPartial"/>}
+}
+    
+

@@ -1,0 +1,86 @@
+﻿@model IEnumerable<MVCHogeschoolPXL.Models.Inschrijving>
+
+@{
+    ViewData["Title"] = "Index";
+    string naam = "";
+}
+
+<div class="row">
+
+    <div class="col-2 pt-3">
+        <form method="post" asp-action="Index" class="w-100 px-2">
+            <div class="form-group">
+                <label class="control-label text-primary">Zoek op naam</label>
+                <input type="text" asp-for="@naam" class="form-control border-primary" />
+                <input type="submit" value="zoek" class="btn btn-outline-primary form-control mt-2" asp-route-student="@naam" />
+            </div>
+        </form>
+        <vc:cursus-filter></vc:cursus-filter>
+    </div>
+    <div class="col-10">
+        <div class="row pt-5 pb-2">
+            <div class="col-5 text-primary">
+                <h1>Overzicht @ViewBag.Cursus</h1>
+            </div>
+            <div class="col-6 text-left d-flex align-items-center">
+                <a asp-action="Create" class="btn btn-success">Nieuwe inschrijving</a>
+            </div>
+        </div>
+        @if (Model.Count() > 0)
+        {
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Student.Gebruiker.Naam) student
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.VakLector.Vak.VakNaam)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.VakLector.Lector.Gebruiker.Naam) lector
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AcademieJaar.StartDatum)
+                            </th>
+                            <th class="text-center">
+                                Acties
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Student.Gebruiker.Voornaam @item.Student.Gebruiker.Naam
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VakLector.Vak.VakNaam)
+                                </td>
+                                <td>
+                                    @item.VakLector.Lector.Gebruiker.Voornaam @item.VakLector.Lector.Gebruiker.Naam
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AcademieJaar.StartDatum)
+                                </td>
+                                <td>
+                                    <div class="btn-group w-100" role="group">
+                                        <a asp-action="Edit" asp-route-id="@item.InschrijvingId" color="info">Wijzig</a>
+                                        <a asp-action="Details" asp-route-id="@item.InschrijvingId" color="primary">Details</a>
+                                        <a asp-action="Delete" asp-route-id="@item.InschrijvingId" color="danger">Wissen</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="text-center col-6 offset-3 pt-5">Er zijn nog geen inschrijvingen!</p>
+        }
+    </div>
+</div>

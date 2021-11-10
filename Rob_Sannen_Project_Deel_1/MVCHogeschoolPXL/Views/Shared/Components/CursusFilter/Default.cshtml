@@ -1,0 +1,15 @@
+﻿@model List<Vak>
+
+<div class="btn btn-group-vertical w-100" role="group">
+    <a class="btn btn-outline-info my-1" asp-action="Index">Algemeen</a>
+    @foreach (var vak in Model)
+    {
+        <a class="btn btn-outline-info my-1"
+           asp-action="Index"
+           asp-controller="Inschrijving"
+           asp-route-vakNaam="@vak.VakNaam">
+            @vak.VakNaam
+        </a>
+    }
+</div>
+

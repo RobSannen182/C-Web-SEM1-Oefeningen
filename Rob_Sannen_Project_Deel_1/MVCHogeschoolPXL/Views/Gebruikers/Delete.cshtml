@@ -1,0 +1,53 @@
+﻿@model MVCHogeschoolPXL.Models.Gebruiker
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="card w-50 text-center border-info mx-auto mt-5">
+    <div class="card-header border-info">
+        <h1 class="text-primary">Wissen</h1>
+    </div>
+    <div class="card-body">
+        <div>
+            <h3 class="text-left text-danger">Weet je zeker dat je deze gebruiker wil wissen?</h3>
+            <h4 class="text-left">Gebruiker</h4>
+            <hr class="border-info" />
+            <dl class="row pt-3">
+                <dt class="col-sm-4 text-left">
+                    @Html.DisplayNameFor(model => model.GebruikerId)
+                </dt>
+                <dd class="col-sm-8 text-left">
+                    @Html.DisplayFor(model => model.GebruikerId)
+                </dd>
+                <dt class="col-sm-4 text-left">
+                    @Html.DisplayNameFor(model => model.Naam)
+                </dt>
+                <dd class="col-sm-8 text-left">
+                    @Html.DisplayFor(model => model.Naam)
+                </dd>
+                <dt class="col-sm-4 text-left">
+                    @Html.DisplayNameFor(model => model.Voornaam)
+                </dt>
+                <dd class="col-sm-8 text-left">
+                    @Html.DisplayFor(model => model.Voornaam)
+                </dd>
+                <dt class="col-sm-4 text-left">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd class="col-sm-8 text-left">
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="card-footer border-info">
+        <form asp-action="Delete">
+            <div class="btn-group w-100" role="group">
+                <input type="hidden" asp-for="GebruikerId" />
+                <input type="submit" value="Wissen" class="btn btn-danger w-50 mx-1" />
+                <a asp-action="Index" class="btn btn-warning w-50 mx-1">Annuleren</a>
+            </div>
+        </form>
+    </div>
+</div>

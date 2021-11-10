@@ -1,0 +1,34 @@
+﻿@page
+@model Oef1.Pages.LocatiesModel
+@{
+    var locaties = Oef1.Data.Databank.Locaties;
+    var rowId = 0;
+}
+<div class="text-center">
+    <a asp-page="NieuweLocatie">Nieuwe locatie</a>
+    <h1 class="display-4">Locaties</h1>
+    <p class="text-dark">Dit is de locaties Razor Page</p>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Locatie-id</th>
+                <th>Postcode</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var loc in locaties)
+            {
+                rowId++;
+                <tr>
+                    <td>@rowId</td>
+                    <td>@loc.LocationId</td>
+                    <td>@loc.Postcode</td>
+                    <td>@loc.City</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+   
+</div>

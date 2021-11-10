@@ -1,0 +1,57 @@
+﻿@model MVCHogeschoolPXL.Models.Vak
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@if (ViewBag.Handboek == "noHandboek")
+{
+    <p class="text-center col-6 offset-3 pt-5">Er zijn nog geen handboeken!<br />Er kan pas een cursus worden aangemaakt als er een handboek is!</p>
+}
+else
+{
+    <form method="post" asp-action="Create">
+        <div class="border border-info mt-5">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row p-4">
+                <div class="col-12">
+                    <div class="row">
+                        <h2 class="text-primary col pb-3">Nieuwe cursus aanmaken</h2>
+                    </div>
+                    <div class="row pb-3">
+                        <div class="form-group col-4">
+                            <label asp-for="VakNaam" class="control-label"></label>
+                            <input asp-for="VakNaam" class="form-control" />
+                            <span asp-validation-for="VakNaam" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-4">
+                            <label asp-for="Studiepunten" class="control-label"></label>
+                            <input asp-for="Studiepunten" class="form-control" />
+                            <span asp-validation-for="Studiepunten" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-4">
+                            <label asp-for="HandboekId" class="control-label"></label>
+                            <select asp-for="HandboekId" class="form-control" asp-items="ViewBag.HandboekId">
+                                <option value="" disabled selected hidden>Kies een handboek</option>
+                            </select>
+                            <span asp-validation-for="HandboekId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row pt-5">
+                        <div class="col-6 text-right">
+                            <input type="submit" value="Maak cursus aan" class="btn btn-success w-50" />
+                        </div>
+                        <div class="col-6 text-left">
+                            <a asp-action="Index" class="btn btn-danger w-50">annuleren</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

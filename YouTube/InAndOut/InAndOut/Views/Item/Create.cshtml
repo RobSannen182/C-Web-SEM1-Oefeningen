@@ -1,0 +1,52 @@
+﻿@model InAndOut.Models.Item
+@{
+    ViewData["Title"] = "Create";
+}
+
+@* asp-action van dit form is Create => ItemController/Create *@
+@* model is Item => het invullen van de velden en dan submitten stuurt een Item terug naar de controller *@
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Add Item</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ItemName"></label> @* Er is een model Item meegegeven => asp-for zorgt dat in het label ItemName(prop Item) wordt weergegeven*@
+                    </div>                                 @* Via data annotation in de klasse Item kan de weergave hiervan worden aangepast*@     
+                    <div class="col-4">
+                        <label asp-for="Borrower"></label>
+                    </div>
+                    <div class="col-4">
+                        <label asp-for="Lender"></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <input asp-for="ItemName" class="form-control"/>
+                    </div>
+                    <div class="col-4">
+                        <input asp-for="Borrower" class="form-control" />
+                    </div>
+                    <div class="col-4">
+                        <input asp-for="Lender" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 text-center row offset-2">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-75" value="Create"/>
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+

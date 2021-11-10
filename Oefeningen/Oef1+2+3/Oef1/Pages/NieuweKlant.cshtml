@@ -1,0 +1,24 @@
+﻿@page
+@model Oef1.Pages.NieuweKlantModel
+@{
+    var locaties = Oef1.Data.Databank.Locaties;
+    var list = locaties.Select(x => new SelectListItem
+    {
+        Text = x.City,
+        Value = x.LocationId.ToString()
+    });
+}
+<form method="post">
+    <fieldset>
+        <legend>Nieuwe klant toevoegen</legend>
+        <br />
+        <label for="naam">Naam:</label>
+        <input type="text" name="naam" />
+        <br />
+        <select asp-items="@list" name="locatieSelect"></select>
+        <br />
+        <label>&nbsp;</label>
+        <br />
+        <input type="submit" value="Submit" />
+    </fieldset>
+</form>

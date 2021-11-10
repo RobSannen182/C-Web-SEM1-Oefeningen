@@ -1,0 +1,28 @@
+﻿@page
+@model Oef1.Pages.KlantLocatieOverzichtModel
+@{
+    var klanten = Data.Databank.Klanten;
+    var locaties = Data.Databank.Locaties;
+    var query = from k in klanten
+                join l in locaties on k.LocationId equals l.LocationId
+                select new { k.KlantNaam, l.City };
+    query.ToList();
+}
+<h1 class="display-4">Klant locatieoverzicht</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Klantnaam</th>
+            <th>Locatie</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in query)
+        {
+            <tr>
+                <td>@x.KlantNaam</td>
+                <td>@x.City</td>
+            </tr>
+        }
+    </tbody>
+</table>

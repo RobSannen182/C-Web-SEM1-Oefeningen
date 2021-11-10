@@ -1,0 +1,37 @@
+﻿@page
+@model Oef1.Pages.KlantModel
+@{
+    var klanten = Oef1.Data.Databank.Klanten;
+    var rowId = 0;
+}
+<div class="text-center">
+    <a asp-page="NieuweKlant">Nieuwe klant</a>
+    <h1 class="display-4">Klanten</h1>
+    <p>Dit is onze klanten Razor Page</p>
+    @foreach (var klant in klanten)
+    {
+        <h3>Klant-id: @klant.KlantId</h3>
+        <h3>Klant-naam: @klant.KlantNaam</h3>
+    }
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Klant-id</th>
+                <th>Klant-naam</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var klant in klanten)
+            {
+                rowId++;
+                <tr>
+                    <th>@rowId</th>
+                    <td>@klant.KlantId</td>
+                    <td>@klant.KlantNaam</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

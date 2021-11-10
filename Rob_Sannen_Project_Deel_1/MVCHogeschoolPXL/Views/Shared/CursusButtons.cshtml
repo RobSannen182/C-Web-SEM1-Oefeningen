@@ -1,0 +1,8 @@
+﻿@model Dictionary<string, string>
+
+<div class="btn btn-group-vertical w-100" role="group">
+    @foreach (var item in Model)
+    {
+        <a class="btn btn-outline-info my-1" asp-controller="@item.Key">@item.Value</a>
+    }
+</div>

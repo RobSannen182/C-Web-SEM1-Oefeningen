@@ -1,0 +1,48 @@
+﻿@model MVCHogeschoolPXL.Models.Gebruiker
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<form asp-action="Edit">
+    <div class="border border-info p-5 mt-5">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="GebruikerId" />
+        <div class="row">
+            <div class="col text-primary pb-3">
+                <h2>Gebruikersgegevens aanpassen</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 form-group">
+                <label asp-for="Naam" class="control-label"></label>
+                <input asp-for="Naam" class="form-control" />
+                <span asp-validation-for="Naam" class="text-danger"></span>
+            </div>
+            <div class="col-4 form-group">
+                <label asp-for="Voornaam" class="control-label"></label>
+                <input asp-for="Voornaam" class="form-control" />
+                <span asp-validation-for="Voornaam" class="text-danger"></span>
+            </div>
+            <div class="col-4 form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row form-group pt-5">
+            <div class="col-6 text-right">
+                <input type="submit" value="Opslaan" class="btn btn-success w-50" />
+            </div>
+            <div class="col-6 text-left">
+                <a asp-action="Index" class="btn btn-danger w-50">Annuleren</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

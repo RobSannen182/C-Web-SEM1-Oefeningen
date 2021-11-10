@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MVCVoertuig.Models.Voertuig>
+
+@{
+    ViewData["Title"] = "View";
+    var merk = ViewBag.Merk;
+}
+<br />
+<car-info merk="@merk"></car-info>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Merk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MerkType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bouwjaar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Km)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VerkoopPrijs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AanwezigInShowroom)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Merk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MerkType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bouwjaar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Km)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VerkoopPrijs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AanwezigInShowroom)
+            </td>
+            <td>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
